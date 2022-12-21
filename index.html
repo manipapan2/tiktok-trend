@@ -19,11 +19,6 @@
         }
 
 
-        body{
-
-        }
-
-
         .bodyFake{
         top: 0;
         left: 0;
@@ -53,15 +48,11 @@
             margin-bottom: 30px;
         }
 
-        input::placeholder{
-            
-        }
 
         button{
             width: 80px;
             height: 40px;
             cursor: default;
-            /* transition: all 0.3s ease; */
             
         }
     </style>
@@ -84,6 +75,7 @@
         setInterval(() => {
             btn.style.pointerEvents = "painted"
         }, 500);
+        Input.addEventListener("keyup",main2)
 
         function main(){
             if(Input.value == "" && btn.style.transform == "translate(79px, 0px)"){
@@ -101,13 +93,24 @@
                 btn.style.pointerEvents = "none"
             }
 
-            if(Input.value == "" && btn.style.transform == ""){
+            if(Input.value == ""){
+                if(btn.style.transform == 'translate(0px, 0px)' || btn.style.transform == ''){
                 btn.style.transition = 'all 0.3s ease'
                 btn.style.transform = "translate(80px, 0px)"
-                console.log(btn.style.transform)
                 btn.style.pointerEvents = "none"
+                }
+                else{
+                    return false
+                }
             }
 
+        }
+
+        function main2(){
+        if(Input.value != "" && btn.style.transform != 'translate(0px, 0px)' || btn.style.transform != ''){
+        btn.style.transform = 'translate(0px, 0px)'
+        btn.style.pointerEvents = "painted"
+        }
         }
     </script>
 </body>
